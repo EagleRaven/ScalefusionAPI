@@ -55,9 +55,11 @@ async function getDevices() {
         const deviceID = devices.device.id;
         console.log("Device ID:", deviceID);
 
+        //console.log(devices)
+
         const message = "Hi there - this is a test from Ryans program";
 
-        await sendMessage(deviceID, message);
+       await sendMessage(deviceID, message);
 
 
     } catch (error) {

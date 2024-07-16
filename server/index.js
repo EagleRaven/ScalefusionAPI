@@ -33,6 +33,9 @@ app.get('/', async (req, res) =>{
     }
 })
 
+//test webhook with this commend in terminal
+// curl -X POST https://scalefusion-api.vercel.app/webhook -H "Content-Type: application/json" -d "{\"order\": \"123456\"}"
+
 let webhookData = {};
 
 app.post('/webhook', (req, res) => {
@@ -51,7 +54,7 @@ app.get('/webhook', (req, res) => {
 })
 
 // Use this only for running nodemon
-app.listen(3000)
+// app.listen(3000)
 
 // const headers = {
 //     'Authorization': `Token ${API_KEY}`,

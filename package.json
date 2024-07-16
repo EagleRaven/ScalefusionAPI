@@ -1,9 +1,11 @@
 {
   "name": "scalefusionapi",
   "version": "1.0.0",
-  "main": "server/index.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "devStart": "nodemon index.js",
+    "devStart": "nodemon server/index.js",
+    "start": "node server/index.js",
     "build": "echo 'No build step required'"
   },
   "keywords": [],
@@ -19,6 +21,5 @@
   
   "devDependencies": {
     "nodemon": "^3.1.4"
-    },
-  "description": ""
+    }
 }

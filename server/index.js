@@ -30,76 +30,76 @@ app.get('/', async (req, res) =>{
     }
 })
 
+//app.listen(3000)
 
 
 
+// const headers = {
+//     'Authorization': `Token ${API_KEY}`,
+//     'Content-Type': 'application/json'
+// };
 
-const headers = {
-    'Authorization': `Token ${API_KEY}`,
-    'Content-Type': 'application/json'
-};
+// async function sendMessage(deviceID, message){
+//     try {
+//         const response = await axios.post(`${BASE_URL}/api/v1/devices/broadcast_message.json`, {
+//             device_ids: deviceID,
+//             sender_name: "Ryan APP Test",
+//             message_body: message,
+//             keep_ringing: "false",
+//             show_as_dialog: "true"
+//         }, { headers });
 
-async function sendMessage(deviceID, message){
-    try {
-        const response = await axios.post(`${BASE_URL}/api/v1/devices/broadcast_message.json`, {
-            device_ids: deviceID,
-            sender_name: "Ryan APP Test",
-            message_body: message,
-            keep_ringing: "false",
-            show_as_dialog: "true"
-        }, { headers });
+//         console.log("Message sent successfully: ", message)
+//     }
+//     catch(error){
+//         if(error.response){
+//             console.error('Error:', error.response.status, error.response.data);
+//         }
+//         else if(error.request){
+//             console.error("No response received:", error.request);
+//         }
+//         else{
+//             console.error("Error setting up request:", error.message);
+//         }
+//     }
+// }
 
-        console.log("Message sent successfully: ", message)
-    }
-    catch(error){
-        if(error.response){
-            console.error('Error:', error.response.status, error.response.data);
-        }
-        else if(error.request){
-            console.error("No response received:", error.request);
-        }
-        else{
-            console.error("Error setting up request:", error.message);
-        }
-    }
-}
+// async function getDevices() {
+//     try {
+//         const response = await axios.get(`${BASE_URL}/api/v1/devices.json`, { headers });
 
-async function getDevices() {
-    try {
-        const response = await axios.get(`${BASE_URL}/api/v1/devices.json`, { headers });
+//         // Get main data
+//         const data = response.data;
 
-        // Get main data
-        const data = response.data;
-
-        // Get specific device
-        const devices = data.devices[0];
+//         // Get specific device
+//         const devices = data.devices[0];
         
-        // Get the ID number of the device
-        const deviceID = devices.device.id;
-        console.log("Device ID:", deviceID);
+//         // Get the ID number of the device
+//         const deviceID = devices.device.id;
+//         console.log("Device ID:", deviceID);
 
-        //console.log(devices)
+//         //console.log(devices)
 
-        const message = "Hi there - this is a test from Ryans program";
+//         const message = "Hi there - this is a test from Ryans program";
 
-        // This sends the message
-        //await sendMessage(deviceID, message);
+//         // This sends the message
+//         //await sendMessage(deviceID, message);
 
 
-    } catch (error) {
-        if (error.response) {
-            // Server responded with a status code outside the 2xx range
-            console.error('Error:', error.response.status, error.response.data);
-        } else if (error.request) {
-            // No response received
-            console.error('No response received:', error.request);
-        } else {
-            // Error setting up the request
-            console.error('Error setting up request:', error.message);
-        }
-    }
-}
+//     } catch (error) {
+//         if (error.response) {
+//             // Server responded with a status code outside the 2xx range
+//             console.error('Error:', error.response.status, error.response.data);
+//         } else if (error.request) {
+//             // No response received
+//             console.error('No response received:', error.request);
+//         } else {
+//             // Error setting up the request
+//             console.error('Error setting up request:', error.message);
+//         }
+//     }
+// }
 
-getDevices();
+// getDevices();
 
 module.exports = app;

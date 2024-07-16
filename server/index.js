@@ -5,14 +5,17 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const axios = require('axios');
-const path = require('path')
+const path = require('path');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 // Set view engine
 app.set("view engine", "ejs");
 app.set("views", __dirname + '/../views');
 
 // Serve static files (css etc)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/../public')));
 
 
 // Route 
@@ -30,9 +33,25 @@ app.get('/', async (req, res) =>{
     }
 })
 
-//app.listen(3000)
+let webhookData = {};
 
+app.post('/webhook', (req, res) => {
+    // Log the webhook payload for debugging
+    webhookData = req.body;
+    console.log('Received webhook:', req.body);
 
+    // Respond with a 200 status code to acknowledge receipt
+    res.status(200).send('Webhook received successfully');
+  });
+
+app.get('/webhook', (req, res) => {
+
+    res.render('webhook', { data: webhookData });
+    console.log(webhookData);
+})
+
+// Use this only for running nodemon
+app.listen(3000)
 
 // const headers = {
 //     'Authorization': `Token ${API_KEY}`,

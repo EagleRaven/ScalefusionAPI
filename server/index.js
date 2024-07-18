@@ -49,6 +49,23 @@ app.post('/webhook', (req, res) => {
 
 app.get('/webhook', (req, res) => {
 
+    console.log('Received GET webhook with query parameters:', req.query);
+
+    // Extract specific query parameters
+    const customer = req.query.customer;
+    const description = req.query.description;
+
+    // Update webhook data with the query parameters
+    webhookData = {
+        customer: customer,
+        description: description
+    };
+
+    // Log the extracted parameters
+    console.log(`Customer: ${customer}`);
+    console.log(`Description: ${description}`);
+
+
     res.render('webhook', { data: webhookData });
     console.log(webhookData);
 })

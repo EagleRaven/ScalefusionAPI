@@ -60,7 +60,7 @@ app.get('/webhook', (req, res) => {
         customer: customer,
         description: description
     };
-
+    
     // Log the extracted parameters
     console.log(`Customer: ${customer}`);
     console.log(`Description: ${description}`);
